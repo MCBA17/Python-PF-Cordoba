@@ -6,8 +6,8 @@ Para la entrega final hice una web de una heladeria ficticia llamada Gelato Para
 
 [Solo se pueden crear, modificar o eliminar objetos con la cuenta de ADMINISTRADOR]
 La cuenta de administrador es:
-Usuario: admin
-Contraseña: matias123
+- Usuario: admin
+- Contraseña: matias123
 
 Se puede entrar a cada funcion y link desde algun botón de la web, pero dejo los links igualmente:
 
