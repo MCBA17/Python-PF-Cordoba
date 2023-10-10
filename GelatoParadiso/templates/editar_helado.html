@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block barra %}
+{% if user.is_authenticated %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+       <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+       <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+       <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+       <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+   </div>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+</li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Logout" %}">Cerrar Sesión</a>
+ </li>
+ <li class="nav-item">
+    {% if user.is_authenticated %}
+    {% with avatar=user.avatar_set.first %}
+        {% if avatar %}
+            <a href="{% url "EditarPerfil" %}">
+                <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" style="width: 42px; height: 40px; border-radius: 50%; margin: 3px auto; display: block;" />
+            </a>
+        {% else %}
+            <p><a href="{% url 'Cambiar Avatar' %}"><button>Agrega un Avatar</button></a></p>
+        {% endif %}
+    {% endwith %}
+    {% endif %}
+</li>
+
+{% else %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Registro" %}">Registrate</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "IniciarSesion" %}">Inicia Sesión</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+      <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+      <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+      <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+  </div>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+ </li>
+
+{% endif %}
+
+{% endblock barra %}
+
+{% block about %}
+
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Guardar cambios</button>
+                    </form>
+            </div>
+            <div class="col-md-6">
+                <div class="about_img"><img src="{{ helado.imagen.url }}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock about %}

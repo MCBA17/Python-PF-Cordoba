@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block barra %}
+{% if user.is_authenticated %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+       <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+       <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+       <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+       <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+   </div>
+</li>
+<li class="nav-item">
+   <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+</li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Logout" %}">Cerrar Sesión</a>
+ </li>
+ <li class="nav-item">
+    {% if user.is_authenticated %}
+    {% with avatar=user.avatar_set.first %}
+        {% if avatar %}
+            <a href="{% url "EditarPerfil" %}">
+                <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" style="width: 42px; height: 40px; border-radius: 50%; margin: 3px auto; display: block;" />
+            </a>
+        {% else %}
+            <p><a href="{% url 'Cambiar Avatar' %}"><button>Agrega un Avatar</button></a></p>
+        {% endif %}
+    {% endwith %}
+    {% endif %}
+</li>
+
+{% else %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Registro" %}">Registrate</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "IniciarSesion" %}">Inicia Sesión</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+      <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+      <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+      <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+  </div>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+ </li>
+
+{% endif %}
+
+{% endblock barra %}
+
+{% block about %}
+
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="about_taital">Resultados: </div>
+        </div>
+
+        <h2>Helados</h2>
+        <div class="grid-container">
+            {% if resultados_helados %}
+                {% for helado in resultados_helados %}
+                    <a href="{% url 'Detalle Helado' helado.id %}" class="grid-item">
+                        <h3>{{ helado.nombre }}</h3>
+                        <img src="{{ helado.imagen.url }}" alt="{{ helado.nombre }}" width="200" height="200">
+                        <p>{{ helado.descripcion_corta }}</p>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>No hubieron coincidencias</p>
+            {% endif %}
+        </div>
+        
+        <h2>Pasteles</h2>
+        <div class="grid-container">
+            {% if resultados_pasteles %}
+                {% for pastel in resultados_pasteles %}
+                    <a href="{% url 'Detalle Pastel' pastel.id %}" class="grid-item">
+                        <h3>{{ pastel.nombre }}</h3>
+                        <img src="{{ pastel.imagen.url }}" alt="{{ pastel.nombre }}" width="200" height="200">
+                        <p>{{ pastel.descripcion_corta }}</p>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>No hubieron coincidencias</p>
+            {% endif %}
+        </div>
+
+
+        <h2>Batidos</h2>
+        <div class="grid-container">
+            {% if resultados_batidos %}
+                {% for batido in resultados_batidos %}
+                    <a href="{% url 'Detalle Batido' batido.id %}" class="grid-item">
+                        <h3>{{ batido.nombre }}</h3>
+                        <img src="{{ batido.imagen.url }}" alt="{{ batido.nombre }}" width="200" height="200">
+                        <p>{{ batido.descripcion_corta }}</p>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>No hubieron coincidencias</p>
+            {% endif %}
+        </div>
+
+
+        <h2>Infantil</h2>
+        <div class="grid-container">
+            {% if resultados_infantil %}
+                {% for infantil in resultados_infantil %}
+                    <a href="{% url 'Detalle Infantil' infantil.id %}" class="grid-item">
+                        <h3>{{ infantil.nombre }}</h3>
+                        <img src="{{ infantil.imagen.url }}" alt="{{ infantil.nombre }}" width="200" height="200">
+                        <p>{{ infantil.descripcion_corta }}</p>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>No hubieron coincidencias</p>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock about %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block barra %}
+
+<div class="nav-item" style="margin-top: 10px;">
+    <div class="container">
+        <div class="row">
+            <form action="{% url 'Resultados' %}" method="GET">
+                <input type="text" name="q" placeholder="Buscar...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+ </div>
+ 
+ 
+ <li class="nav-item">
+     <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+  </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{% url "About" %}">About</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Menú
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+        <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+        <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+        <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+    </div>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+ </li>
+  <li class="nav-item">
+     <a class="nav-link" href="{% url "Logout" %}">Cerrar Sesión</a>
+  </li>
+  <li class="nav-item">
+     {% if user.is_authenticated %}
+     {% with avatar=user.avatar_set.first %}
+         {% if avatar %}
+             <a href="{% url "EditarPerfil" %}">
+                 <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" style="width: 42px; height: 40px; border-radius: 50%; margin: 3px auto; display: block;" />
+             </a>
+         {% else %}
+             <p><a href="{% url 'Cambiar Avatar' %}"><button>Agrega un Avatar</button></a></p>
+         {% endif %}
+     {% endwith %}
+     {% endif %}
+ </li>
+
+{% endblock barra %}
+
+{% block about %}
+
+<div class="about_section layout_padding">
+    <div class="container">
+       <div class="row">
+          </div>
+          <div class="about_taital">Cambiar Avatar</div>
+          <div class="header-text">
+            {% if user.is_authenticated %}
+            {% with avatar=user.avatar_set.first %}
+                {% if avatar %}
+                <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" style="width: 80px; height: 80px; border-radius: 50%; margin: 7px auto; display: block;" />
+                {% else %}
+                    <p>No tienes una foto de perfil.</p>
+                {% endif %}
+            {% endwith %}
+            {% endif %}
+            <h1><p> <form method="post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 {{ formulario.as_p }}
+                 <h1><p><button type="submit" class="btn btn-primary">Guardar</button></h1></p>
+                 <p><a href="{% url "EditarPerfil" %}">¿Quieres modificar tus datos?</p></a>
+       </div>
+    </div>
+ </div>
+
+{% endblock about %}
+
+
+{% if user.is_authenticated %}
+{% with avatar=user.avatar_set.first %}
+    {% if avatar %}
+    <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" <img src="{{ avatar.imagen.url }}" alt="Mi Foto de Perfil" style="width: 80px; height: 80px; margin: 100px auto; display: block;" />
+    {% else %}
+        <p>No tienes una foto de perfil.</p>
+    {% endif %}
+{% endwith %}
+{% endif %}

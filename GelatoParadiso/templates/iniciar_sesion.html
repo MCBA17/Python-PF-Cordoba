@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block barra %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Registro" %}">Registrate</a>
+ </li>
+ <li class="nav-item active">
+    <a class="nav-link" href="{% url "IniciarSesion" %}">Inicia Sesión</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+      <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+      <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+      <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+  </div>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+ </li>
+
+{% endblock barra %}
+
+{% block about %}
+
+<div class="about_section layout_padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6">
+             <div class="about_taital_main">
+                <div class="about_taital">Inicia Sesión</div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <h1><p><button type="submit" class="btn">Iniciar Sesión</button></h1></p>
+                </form>
+
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="about_img"><img src="{% static 'images/registroimg.jpg' %}"></div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+{% endblock about %}

@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block barra %}
+
+<div class="nav-item" style="margin-top: 10px;">
+   <div class="container">
+       <div class="row">
+           <form action="{% url 'Resultados' %}" method="GET">
+               <input type="text" name="q" placeholder="Buscar...">
+               <button type="submit">Buscar</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+<li class="nav-item active">
+    <a class="nav-link" href="{% url "Inicio" %}">Inicio</a>
+ </li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url "Registro" %}">Registrate</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "IniciarSesion" %}">Inicia Sesión</a>
+ </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "About" %}">About</a>
+ </li>
+ <li class="nav-item dropdown">
+   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Menú
+   </a>
+   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{% url "Lista Helados" %}">Helados</a>
+      <a class="dropdown-item" href="{% url "Lista Pasteles" %}">Pasteles</a>
+      <a class="dropdown-item" href="{% url "Lista Batidos" %}">Batidos</a>
+      <a class="dropdown-item" href="{% url "Lista Infantil" %}">Infantil</a>
+  </div>
+ <li class="nav-item">
+    <a class="nav-link" href="{% url "Services" %}">Servicio</a>
+ </li>
+
+{% endblock barra %}
+
+
+{% block about %}
+
+      <!-- about section start -->
+      <div class="about_section layout_padding">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-6">
+                 <div class="about_taital_main">
+                    <div class="about_taital">Sobre Nosotros</div>
+                    <p class="about_text">En Gelato Paradiso, cada cucharada es una obra de arte congelada. Nuestro gelato artesanal, preparado con los ingredientes más frescos y cuidadosamente seleccionados, es la culminación de años de pasión y experiencia en la creación de sabores únicos y emocionantes.</p>
+                    <p class="about_text">Cada porción es una sinfonía de texturas y gustos, donde la creatividad se encuentra con la tradición italiana. Ven y sumérgete en una experiencia verdaderamente única, donde cada cucharada es una aventura para tus sentidos. En Gelato Paradiso, estamos comprometidos a llevar la excelencia y el arte del gelato a cada cliente. ¡Descubre la magia en cada cucharada y déjate llevar por la dulce melodía de nuestros sabores helados!</p>
+                    <div class="read_bt"><a href="{% url "About" %}">Ver más</a></div>
+                 </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="about_img"><img src="{% static 'images/about-img.jpg' %}"></div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- about section end -->
+
+{% endblock about %}
+
+{% block gallery %}
+
+<!-- gallery section start -->
+<div class="gallery_section layout_padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-12">
+             <h1 class="gallery_taital">Nuestra Galería</h1>
+             <p class="gallery_text">Explora nuestra galería de imágenes y descubre la pasión y la calidad que ponemos en cada helado. Capturamos momentos deliciosos y memorables que esperamos que disfrutes tanto como nosotros al crearlos</p>
+          </div>
+       </div>
+       <div class="">
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen1.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen2.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen3.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen4.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen5.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="overlay">
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen6.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                         <div class="overlay">
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="gallery_section_2">
+             <div class="row">
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen7.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen8.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="container_main">
+                      <img src="{% static 'images/imagen9.jpg' %}" alt="Avatar" class="image">
+                      <div class="overlay">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="seemore_bt"><a href="#">Ver más</a></div>
+    </div>
+ </div>
+ <!-- gallery section end -->
+ 
+{% endblock gallery %}
+
+{% block services %}
+
+      <!-- services section start -->
+      <div class="services_section layout_padding">
+        <div class="container">
+           <div class="row">
+              <div class="col-sm-12">
+                 <h1 class="services_taital">Servicios</h1>
+                 <p class="services_text">Ofrecemos el mejor servicio para nuestros clientes </p>
+              </div>
+           </div>
+           <div class="services_section_2">
+              <div class="row">
+                 <div class="col-lg-4 col-sm-12 col-md-4">
+                    <div class="box_main active">
+                       <div class="house_icon">
+                          <img src="{% static 'images/icon.png' %}" class="image_1">
+                          <img src="{% static 'images/icon.png' %}" class="image_2">
+                       </div>
+                       <h3 class="decorate_text">Gelato artesanal</h3>
+                       <p class="tation_text">Arte en cada cucharada </p>
+                       <div class="readmore_bt"><a href="{% url "About" %}">Ver más</a></div>
+                    </div>
+                 </div>
+                 <div class="col-lg-4 col-sm-12 col-md-4">
+                    <div class="box_main">
+                       <div class="house_icon">
+                          <img src="{% static 'images/icon.png' %}" class="image_1">
+                          <img src="{% static 'images/icon.png' %}" class="image_2">
+                       </div>
+                       <h3 class="decorate_text">Más de 10 Sabores Originales</h3>
+                       <p class="tation_text">Explora Más de 10 Razones para Disfrutar. </p>
+                       <div class="readmore_bt"><a href="{% url "Lista Helados" %}">Ver más</a></div>
+                    </div>
+                 </div>
+                 <div class="col-lg-4 col-sm-12 col-md-4">
+                    <div class="box_main">
+                       <div class="house_icon">
+                          <img src="{% static 'images/icon.png' %}" class="image_1">
+                          <img src="{% static 'images/icon.png' %}" class="image_2">
+                       </div>
+                       <h3 class="decorate_text">Ambiente cómodo</h3>
+                       <p class="tation_text">Disfruta de un Ambiente Acogedor. </p>
+                       <div class="readmore_bt"><a href="{% url "Services" %}">Ver más</a></div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- services section end -->
+
+{% endblock services %}

@@ -1,0 +1,17 @@
+<button id="generar-cupon">Generar Cupón</button>
+<div id="cupon-result"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const generarCuponButton = document.getElementById('generar-cupon');
+    const cuponResult = document.getElementById('cupon-result');
+
+    generarCuponButton.addEventListener('click', function () {
+        fetch('/generar_cupon/')
+            .then(response => response.json())
+            .then(data => {
+                cuponResult.innerHTML = `Cupón generado: ${data.cupon}`;
+            });
+    });
+});
+</script>
