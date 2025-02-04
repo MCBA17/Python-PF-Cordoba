@@ -2,7 +2,7 @@ ENTREGA FINAL MATIAS CORDOBA COMISION 47765
 
 Video explicativo: https://youtu.be/ETyB2FB5qWQ?si=wftiMsAo--CuGuY5
 
-Para la entrega final hice una web de una heladeria ficticia llamada Gelato Paradiso (ahora me enteré de que existe una llamada así en Estados Unidos pero cuando la hice no lo sabía 😓)
+Para la entrega final hice una web de una heladeria ficticia llamada Gelato Paradiso
 
 [Solo se pueden crear, modificar o eliminar objetos con la cuenta de ADMINISTRADOR]
 La cuenta de administrador es:
@@ -42,5 +42,3 @@ Ampliar cada objeto para ver sus atributos:
 Para Modificar o Eliminar un objeto se pueden presionar los botones correspondientes dentro de los detalles de ese objeto, los links vinculados son:
 - (Modificar Objeto) GelatoParadiso/editar_(modelo)/(id)
 - (Eliminar Objeto) GelatoParadiso/borrar_(modelo)/(id)
-
-Eso es todo 😎
